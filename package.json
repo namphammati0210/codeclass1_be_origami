@@ -4,17 +4,48 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www"
+    "start:dev": "nodemon ./bin/www",
+    "test": "jest --testEnvironment=node --coverage --forceExit --runInBand"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.0.1",
     "express": "~4.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongoose": "^6.4.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "jest": "^28.1.2",
+    "nodemon": "^2.0.18",
+    "supertest": "^6.2.4"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@database": "./database",
+    "@models": "./database/models",
+    "@repositories": "./repositories",
+    "@controllers": "./controllers",
+    "@constants": "./constants",
+    "@helpers": "./helpers",
+    "@middlewares": "./middlewares"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "@root/(.*)": "<rootDir>/$1",
+      "@database/(.*)": "<rootDir>/database/$1",
+      "@models/(.*)": "<rootDir>/database/models/$1",
+      "@repositories/(.*)": "<rootDir>/repositories/$1",
+      "@controllers/(.*)": "<rootDir>/controllers/$1",
+      "@constants/(.*)": "<rootDir>/constants/$1",
+      "@helpers/(.*)": "<rootDir>/helpers/$1",
+      "@middlewares/(.*)": "<rootDir>/middlewares/$1"
+    }
   }
 }
